@@ -69,6 +69,7 @@ For inference you could use the module in ***yolov5s.py***. It's basically a cla
 
 You'll find it very much easy to incorporate the class file into your custom codebase, whether it's running inference on image(s) or stream. 
 
+Also you can simply check out ***inference.py*** to see example of TensorRT class inference. 
 
 # Custom model
 
