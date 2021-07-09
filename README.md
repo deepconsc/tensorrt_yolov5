@@ -1,4 +1,7 @@
 # Yolo V5 TensorRT Conversion & Deployment on Jetson Nano & Xavier [Ultralytics EXPORT]
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/deepconsc/tensorrt_yolov5/blob/master/LICENSE)
+[![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)]()
+
 [<img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/splash-export-competition.png">](https://github.com/ultralytics/yolov5/discussions/3213)
 
 # JetPack
