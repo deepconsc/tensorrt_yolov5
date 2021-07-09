@@ -75,7 +75,7 @@ For custom model conversion there are some factors to take in consideration.
 -  Only YoloV5 S (small) version is supported.
 - You should use your own checkpoint that only contains network weights (i.e. stripped optimizer, which is last output of YoloV5 pipeline after training finishes)
  - Change the ***CLASS_NUM*** in ***yololayer.h*** - ```Line 28``` to number of classes your model has before building yolo. If you've already built it, you can just run ```cmake .. && make``` from build folder after changing the class numbers. 
- - Change the ***Input W*** and ***Input H*** according to resolution you've trained the network on - ```Lines 29, 30```
+ - Change the ***Input W*** and ***Input H*** according to resolution you've trained the network in ***yololayer.h*** on - ```Lines 29, 30```
  - Change the ***CONF*** and ***NMS*** thresholds according to your preferences in ***yolov5.cpp*** - ```Lines 12, 13```
  - Change the batch size according to your requirements in ***yolov5.cpp*** - ```Line 14```.
  
