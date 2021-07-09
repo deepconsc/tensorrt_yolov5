@@ -1,4 +1,5 @@
-# Yolo V5 TensorRT Conversion & Deployment on Jetson Nano
+# Yolo V5 TensorRT Conversion & Deployment on Jetson Nano & Xavier [Ultralytics EXPORT]
+[<img src="https://github.com/ultralytics/yolov5/releases/download/v1.0/splash-export-competition.png">](https://github.com/ultralytics/yolov5/discussions/3213)
 
 # JetPack
 Firstly you should get latest JetPack *v4.5.1* from NVIDIA and boot it onto Jetson Nano. 
