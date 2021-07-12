@@ -12,6 +12,8 @@ import pycuda.driver as cuda
 import tensorrt as trt
 import torch
 import torchvision
+import tqdm 
+import logging 
 
 CONF_THRESH = 0.7
 IOU_THRESHOLD = 0.4
@@ -75,9 +77,11 @@ class YoLov5TRT(object):
         """
         description: Warmup function for TensorRT. 
         """
-        for _ in range(20):
+        logging.info('Starting to warm up...')
+        for _ in tqdm.tqdm(range(20)):
             standard = np.random.randn(800, 600, 3)
             self.infer((standard + 255).astype(np.uint8))
+        logging.info('Warmup has been finished')
 
     def infer(self, raw_image: np.ndarray):
         """
