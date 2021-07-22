@@ -7,7 +7,7 @@
 
 # Notes
 The repository is in beta version, yet 90% of todos are accomplished. 
-I'll be updating the repository to final version in the week of July 12-16. 
+I'll be updating the repository to final version in the week of July 26-30. 
 
 Bonus point:
 - As long as Jetson Xavier makes excellent mini-node for distributed inference, I'll be including codebase and tutorial for Xavier as well.

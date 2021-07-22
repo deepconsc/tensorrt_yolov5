@@ -139,16 +139,7 @@ class YoLov5TRT(object):
 
     def preprocess_image(self, raw_bgr_image):
         """
-        description: Convert BGR image to RGB,
-                     resize and pad it to target size, normalize to [0,1],
-                     transform to NCHW format.
-        param:
-            input_image_path: str, image path
-        return:
-            image:  the processed image
-            image_raw: the original image
-            h: original height
-            w: original width
+        Image Preprocessor: Letterbox, BGR2RGB, NCHW 
         """
         image_raw = raw_bgr_image
         h, w, c = image_raw.shape
@@ -181,15 +172,6 @@ class YoLov5TRT(object):
         return image, image_raw, h, w
 
     def xywh2xyxy(self, origin_h, origin_w, x):
-        """
-        description:    Convert nx4 boxes from [x, y, w, h] to [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
-        param:
-            origin_h:   height of original image
-            origin_w:   width of original image
-            x:          A boxes tensor, each row is a box [center_x, center_y, w, h]
-        return:
-            y:          A boxes tensor, each row is a box [x1, y1, x2, y2]
-        """
         y = torch.zeros_like(x) if isinstance(x, torch.Tensor) else np.zeros_like(x)
         r_w = self.input_w / origin_w
         r_h = self.input_h / origin_h
@@ -209,17 +191,6 @@ class YoLov5TRT(object):
         return y
 
     def postprocess(self, output, origin_h, origin_w):
-        """
-        description: postprocess the prediction
-        param:
-            output:     A tensor likes [num_boxes,cx,cy,w,h,conf,cls_id, cx,cy,w,h,conf,cls_id, ...] 
-            origin_h:   height of original image
-            origin_w:   width of original image
-        return:
-            result_boxes: finally boxes, a boxes tensor, each row is a box [x1, y1, x2, y2]
-            result_scores: finally scores, a tensor, each element is the score correspoing to box
-            result_classid: finally classid, a tensor, each element is the classid correspoing to box
-        """
         num = int(output[0])
         pred = np.reshape(output[1:], (-1, 6))[:num, :]
         pred = torch.Tensor(pred).cuda()
@@ -227,10 +198,10 @@ class YoLov5TRT(object):
         scores = pred[:, 4]
         classid = pred[:, 5]
 
-        si = scores > CONF_THRESH
-        boxes = boxes[si, :]
-        scores = scores[si]
-        classid = classid[si]
+        chunk = scores > CONF_THRESH
+        boxes = boxes[chunk, :]
+        scores = scores[chunk]
+        classid = classid[chunk]
 
         boxes = self.xywh2xyxy(origin_h, origin_w, boxes)
 
