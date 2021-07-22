@@ -5,4 +5,5 @@ scipy>=1.4.1
 torchvision>=0.8.1
 tqdm>=4.41.0
 tensorboard>=2.4.1
-thop  # FLOPS computation
+thop  
+pycuda

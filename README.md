@@ -62,7 +62,7 @@ After couple of minutes the TensorRT engine file will be built. The default sett
 - Num_classes: 80
 ## Checking the engine sanity
 ```
-sudo ./yolov5 -d yolov5s.engine sample_images
+sudo ./yolov5 -d yolov5s.engine ../sample_images
 ```
 The script will output images with plotted boxes & confidences. 
 
@@ -124,3 +124,5 @@ sudo ./yolov5 -s yolov5s.wts yolov5s_int8.engine s
  https://github.com/wang-xinyu/tensorrtx
  - For Torch installation procedures:
  https://qengineering.eu/install-pytorch-on-jetson-nano.html
+ - For Swap memory management:
+ https://github.com/JetsonHacksNano/installSwapfile
