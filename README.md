@@ -25,12 +25,12 @@ You could find JetPack download options ***[here](https://developer.nvidia.com/e
 2. Clone into required repositories:  
    ```
    git clone -b v5.0 https://github.com/ultralytics/yolov5.git
-   git clone https://github.com/deepconsc/yolov5_tensorrt.git
+   git clone https://github.com/deepconsc/tensorrt_yolov5
    ```
 3. Install requirements for JetPack:
 	Weirdly enough the Jetson doesn't come with preinstalled pip, we've to do it manually. Also ***matplotlib*** and ***torch*** would fail via pip installation, so we've to use workaround. The below script will take care of installing all the dependencies we'll need.
 	
-	Enter ***yolov5_tensorrt*** and run:
+	Enter ***tensorrt_yolov5*** and run:
    ```
     bash requirements.sh
    ```
